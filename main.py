@@ -409,7 +409,7 @@ brightness_slider.pack(pady=5)
 # Smart Hue toggles
 # -------------------------
 smart_frame = tk.Frame(root, bg="#111111")
-smart_frame.pack(pady=5)
+smart_frame.pack(pady=1)
 
 smart_screen = tk.BooleanVar(value=False)
 smart_audio = tk.BooleanVar(value=False)
@@ -453,35 +453,6 @@ update_brightness_toggle_state()
 # -------------------------
 # Smart functionality
 # -------------------------
-def screen_color_loop():
-    """
-    Reads average screen color.
-    Controls hue/sat always, and brightness only if Smart Screen Brightness Control is enabled and Audio Reactive is disabled.
-    """
-    while True:
-        try:
-            if smart_screen.get():
-                img = ImageGrab.grab()
-                img = img.resize((50,50))
-                arr = np.array(img)
-                r, g, b = arr[:,:,0].mean(), arr[:,:,1].mean(), arr[:,:,2].mean()
-
-                # Extract HSV from average screen color
-                rr, gg, bb = r/255.0, g/255.0, b/255.0
-                h, s, v = colorsys.rgb_to_hsv(rr, gg, bb)
-
-                # Always update color hue/saturation
-                request_color_hs(h, s)
-
-                # Only update brightness if brightness control is enabled and audio reactive is off
-                if smart_screen_brightness.get() and not smart_audio.get():
-                    brightness = int(np.clip(v * 100, 5, 100))
-                    request_brightness(brightness)
-
-            time.sleep(0.05)
-        except Exception as e:
-            print("Screen loop error:", e)
-            time.sleep(0.2)
 
 
 # Frequency band selection for audio reactive (checkboxes)
