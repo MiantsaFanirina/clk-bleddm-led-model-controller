@@ -1,0 +1,4 @@
+bleak
+pillow
+numpy
+pyaudio
