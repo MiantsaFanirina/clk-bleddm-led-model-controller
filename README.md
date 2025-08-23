@@ -37,7 +37,7 @@ Clone this repository:
 
 ```bash
 git clone https://github.com/MiantsaFanirina/clk-bleddm-led-model-controller.git
-cd smart-led-controller
+cd clk-bleddm-led-model-controller
 ```
 
 Edit the configuration section in the Python file:
