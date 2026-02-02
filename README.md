@@ -40,11 +40,17 @@ git clone https://github.com/MiantsaFanirina/clk-bleddm-led-model-controller.git
 cd clk-bleddm-led-model-controller
 ```
 
+Run the brute force script to get your CHAR_UUID
+
+```bash
+python brute_force_UUID.py
+```
+
 Edit the configuration section in the Python file:
 
 ```bash
 ADDRESS = "BE:27:62:00:3E:91"  # your LED strip BLE address
-CHAR_UUID = "0000fff3-0000-1000-8000-00805f9b34fb"
+CHAR_UUID = "0000fff3-0000-1000-8000-00805f9b34fb" # LED UUID from the brute force script
 ```
 
 Run the app:
